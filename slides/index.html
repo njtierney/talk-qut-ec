@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>.large[greta U+003A scalable statistical inference]</title>
+    <meta charset="utf-8" />
+    <meta name="author" content=".large[Nicholas Tierney, Telethon Kids Institute]" />
+    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
+    <link rel="stylesheet" href="njtheme.css" type="text/css" />
+    <link rel="stylesheet" href="extra.css" type="text/css" />
+    <link rel="stylesheet" href="animate.css" type="text/css" />
+    <link rel="stylesheet" href="typewriter.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+# .large[greta: scalable statistical inference]
+
+&lt;br&gt; &lt;br&gt;
+
+## Nicholas Tierney
+## Telethon Kids Institute, Perth, Australia
+## QUT EC Seminar, 22nd December, 2021
+
+&lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;fill:#484878;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"&gt;&lt;/path&gt;&lt;/svg&gt; **njt-qut-ec.netlify.app** 
+
+&lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;fill:#484878;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"&gt;&lt;/path&gt;&lt;/svg&gt; **nj_tierney**
+
+---
+
+layout: true
+&lt;div class="my-footer"&gt;&lt;span&gt;bit.ly/njt-qut-ec • @nj_tierney&lt;/span&gt;&lt;/div&gt; 
+
+---
+# The story so far
+
+2008-2012:  Undergraduate + honours in Psychology
+
+--
+
+2013 - 2017: PhD Statistics, QUT
+
+- Exploratory Data Analysis (EDA)
+- Bayesian Statistics
+- Geospatial statistics / Optimal facility placement
+
+--
+
+2018 - 2020: Research Fellow / Lecturer at Monash
+
+  - Design and improve tools for (exploratory) data analysis
+  - Teach introduction to data analysis (ETC1010)
+
+---
+    
+# EDA: Exploratory Data Analysis
+
+.large[
+&gt; ...EDA is an approach to analyzing data sets to summarize their main characteristics, often with visual methods. (Wikipedia)
+
+John Tukey, Frederick Mosteller, Bill Cleveland, Dianne Cook, Heike Hoffman, Rob Hyndman, Hadley Wickham
+]
+
+---
+
+# EDA: Why it's worth it
+
+&lt;img src="gifs/dino-saurus.gif" width="80%" style="display: block; margin: auto;" /&gt;
+
+-- From ["Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing"](https://www.autodeskresearch.com/publications/samestats)
+
+---
+
+## `visdat::vis_dat(airquality)`
+
+&lt;img src="figures/show-visdat-1.png" width="150%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## `naniar::geom_miss_point()`
+
+&lt;img src="figures/gg-miss-point-1.png" width="150%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## `naniar::gg_miss_var(airquality)`
+
+&lt;img src="figures/gg-miss-var-1.png" width="150%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## `naniar::gg_miss_upset(riskfactors)`
+
+&lt;img src="figures/gg-miss-upset-1.png" width="150%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## `brolgar` - take spaghetti
+
+&lt;img src="figures/gg-brolgar-1.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## `brolgar` - sample spaghetti
+
+
+&lt;img src="figures/gg-brolgar-sample-1.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## `brolgar` - spread spaghetti
+
+
+&lt;img src="figures/gg-brolgar-spread-1.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Now
+
+.large[
+
+Research Software Engineer
+
+Working at [Telethon Kids Institute](https://www.telethonkids.org.au/)
+
+With the [Malaria Atlas Project](https://malariaatlas.org/)
+
+]
+
+---
+
+# Define: Research Software Engineer
+
+&gt; A Research Software Engineer (RSE) combines professional software engineering expertise with an intimate understanding of research.
+
+-- (from https://society-rse.org/about/)
+
+---
+
+# What sorts of things does an RSE do?
+
+.large[
+- Create software to **solve research problems**
+- Develop tools that **abstract the right components** to facilitate research
+- Help researchers to **find and learn** good tools
+- Support researchers with (computational) reproducibility
+]
+
+(adapted from Heidi Seibold's [UseR2021 Keynote talk](https://docs.google.com/presentation/d/1XQc2U2X8hiK43UzUi9IwvsvULxhVy0WzWSa_Kt4ZJv4/view#slide=id.gdbfb32d486_0_448))
+
+
+---
+class: inverse, middle, center
+# What do I do as an RSE?
+
+---
+background-image: url("imgs/greta-logo-background.png")
+background-size: contain
+class: center, bottom
+
+.pull-left[
+Professor Nick Golding
+]
+
+.pull-right[
+[greta-stats.org](https://www.greta-stats.org)
+]
+
+---
+.pull-left[
+## stan
+
+.vsmall[
+```
+data {
+  real alpha;
+  real beta;
+  real&lt;lower=0&gt; sigma2;
+  int&lt;lower=0&gt; J;
+  array[J] int y;
+  vector[J] Z;
+  array[J] int n;
+}
+transformed data {
+  real&lt;lower=0&gt; sigma;
+  sigma = sqrt(sigma2);
+}
+parameters {
+  real theta1;
+  real theta2;
+  vector[J] X;
+}
+model {
+  array[J] real p;
+  theta1 ~ normal(0, 32); // 32^2 = 1024 
+  theta2 ~ normal(0, 32);
+  X ~ normal(alpha + beta * Z, sigma);
+  y ~ binomial_logit(n, theta1 + theta2 * X);
+}
+```
+]
+]
+
+.pull-right[
+## JAGS
+
+```
+for(j in 1 : J) {
+   y[j] ~ dbin(p[j], n[j])
+   logit(p[j]) &lt;- theta[1] + theta[2] * X[j]
+   X[j] ~ dnorm(mu[j], tau)
+   mu[j] &lt;- alpha + beta * Z[j]
+}
+theta[1] ~ dnorm(0.0, 0.001)
+theta[2] ~ dnorm(0.0, 0.001)
+```
+
+## greta
+
+```r
+theta &lt;- normal(0, 32, dim = 2)
+mu &lt;- alpha + beta * Z
+X &lt;- normal(mu, sigma)
+p &lt;- ilogit(theta[1] + theta[2] * X)
+distribution(y) &lt;- binomial(n, p)
+```
+
+]
+
+---
+
+My primary role: Maintain and improve code base of  greta
+
+--
+
+What does that look like?
+
+- 11,177 lines of code
+- 1,535 tests
+- ~705 functions
+
+* put bits on what greta is here *
+
+---
+
+## [{greta}: scalable statistical inference](https://greta-stats.org/)
+
+- Some of the initial work:
+
+ - Transfer package builds over to GitHub Actions
+ - Develop helper functions for easy installation of TensorFlow + Python
+ - Convert roxygen to use markdown
+ - Implement tidyverse style
+ - Review error messages
+ - use glue over paste/sprintf to construct messages
+ - Various user side improvements for messages and loading of tensorflow
+ - Use snapshot testing to better capture messages
+
+---
+
+##  Examples of daily tasks: with {greta}
+
+Python no longer detected?
+  - Latest RStudio doesn't detect Python
+  - File issue with RStudio
+  - Identify fix with an environment variable
+
+---
+
+##  Examples of daily tasks: with {greta}
+
+RStudio Tensorflow package has updated
+  - `dim()` now returns vector not list
+  - Completely breaks greta
+  - (This happens just as we are teaching a course)
+  - Solution: have two versions of greta, one docker container, one local
+  - Browse into errored parts of the code in each version
+
+---
+
+# Thanks
+
+.large.pull-left[
+- Nick Golding
+- Miles McBain
+]
+
+.large.pull-right[
+- Di Cook
+- Rob Hyndman
+]
+
+---
+
+# Colophon
+
+.large[
+- Slides made using [xaringan](https://github.com/yihui/xaringan)
+- Extended with [xaringanthemer](https://github.com/gadenbuie/xaringanthemer)
+- Colours taken + modified from [lorikeet theme from ochRe](https://github.com/ropenscilabs/ochRe)
+- Header font is **Josefin Sans**
+- Body text font is **Montserrat**
+- Code font is **Fira Mono**
+- template available: [njtierney/njt-talks](github.com/njtierney/njt-talks)
+]
+
+
+---
+
+# Bonus round
+
+---
+
+# Example: Malaria modelling
+
+
+
+---
+
+# Example: Malaria modelling
+
+
+
+```r
+cleaned_data &lt;- data %&gt;%
+    as_tibble() %&gt;%
+    group_by(who_region) %&gt;%
+*   transmute(.who_region_id = cur_group_id()) %&gt;%
+    ungroup(who_region) %&gt;%
+    select(-who_region) %&gt;% 
+    group_by(who_subregion) %&gt;%
+*   transmute(.who_subregion_id = cur_group_id()) %&gt;%
+    ungroup(who_subregion) %&gt;%
+    select(-who_subregion) %&gt;% 
+    group_by(country) %&gt;%
+*   transmute(.country_id = cur_group_id()) %&gt;%
+    ungroup(country) %&gt;%
+    select(-country) 
+```
+
+
+---
+
+# Example: Malaria modelling
+
+[`yahtsee` (Yet Another Hierarchical Time Series Extension + Expansion)](https://github.com/njtierney/yahtsee)
+
+
+```r
+m &lt;- fit_hts(
+  formula = pr ~ avg_lower_age + 
+* hts(who_region,
+*     who_subregion,
+*     country),
+  .data = malaria_africa_ts,
+  family = "gaussian"
+)
+```
+
+---
+# Contact matrices - [Prem et al](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005697#sec020)
+
+&lt;img src="imgs/prem-age-matrix.png" width="40%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Contact matrices
+
+.pull-left[
+&lt;img src="imgs/prem-supp-data.png" width="90%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+&lt;img src="imgs/prem-excel-data.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+# Contact matrices
+
+&lt;img src="imgs/prem-matrix-excel-australia.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+---
+# Contact matrices
+
+&lt;img src="imgs/patchwork-contact.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Contact matrices
+
+- `conmat` (name in progress) package facilitates contact matrix analysis
+- Nick Golding contributed statistical modelling
+- I implemented package design, infrastructure, tests, documentation
+- absolutely critical in recent national covid19 modelling to prime ministers cabinet
+- package available on [github](https://github.com/njtierney/conmat)
+
+---
+
+# Developing robust pipelines for rapid analysis
+
+- Working with "Doherty Modelling Group" for Prime Ministers Cabinet
+- Ensure codebase stays stable with multiple contributors
+- Ensure order of operations stays consistent/easy to comprehend with large amounts of code being written (about 8000 lines of code and 260 functions written from September - October)
+
+--
+
+- Use {targets}, {fnmate}, and {capsule} to capture pipline workflow, rapidly write functions, and lock in package versions
+- Example: https://github.com/njtierney/ttiq-simulation
+
+
+
+---
+
+.vhuge[
+**End.**
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"slideNumberFormat": "%current%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

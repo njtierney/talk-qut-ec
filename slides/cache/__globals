@@ -1,0 +1,18 @@
+read-tb	::	!	%>%	<	==	>	~	age	c	case_when	count	country	filter	gather	genderage	iso3	length	mutate	new_sp_fu	new_sp_m04	read_csv	select	separate	str_sub	stuff	stuff1	stuff2	year
+fun-heights-appear	aes	animate	country	ease_aes	geom_line	ggplot	height_cm	heights	transition_manual	year
+dino-saurus	include_graphics
+show-visdat	airquality	vis_dat
+gg-miss-point	aes	airquality	geom_miss_point	ggplot	Ozone	Solar.R
+gg-miss-var	airquality	gg_miss_var
+gg-miss-upset	gg_miss_upset	riskfactors
+gg-brolgar	aes	country	geom_line	ggplot	height_cm	heights	year
+gg-brolgar-sample	aes	country	facet_sample	geom_line	ggplot	height_cm	heights	year
+gg-brolgar-spread	aes	country	facet_strata	geom_line	ggplot	height_cm	heights	year
+malaria-eg	::	~	list	malaria_africa_ts
+show-code	%>%	as_tibble	country	cur_group_id	data	group_by	select	transmute	ungroup	who_region	who_subregion
+show-yahtsee	~	fit_hts	malaria_africa_ts
+show-prem-matrix	::
+show-prem-matrix-data	::
+show-prem-matrix-excel	::
+show-prem-matrix-excel-data-oz	::
+show-conmat-matric	::
