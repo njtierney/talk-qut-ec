@@ -463,20 +463,13 @@ include_graphics("imgs/grete-hermann.jpeg")
 ]
 
 ---
+
 # .huge[demo]
 
----
+.large[
 
-# Thanks
-
-.large.pull-left[
-- Nick Golding
-- Miles McBain
-]
-
-.large.pull-right[
-- Di Cook
-- Rob Hyndman
+- [greta-stats.org](https://greta-stats.org/)
+- [greta course notes](https://github.com/njtierney/greta-course-notes)
 ]
 
 ---
@@ -484,7 +477,7 @@ include_graphics("imgs/grete-hermann.jpeg")
 # Colophon
 
 .large[
-- Slides made using [xaringan](https://github.com/yihui/xaringan)
+- Slides made using [xaringan](https:x//github.com/yihui/xaringan)
 - Extended with [xaringanthemer](https://github.com/gadenbuie/xaringanthemer)
 - Colours taken + modified from [lorikeet theme from ochRe](https://github.com/ropenscilabs/ochRe)
 - Header font is **Josefin Sans**
@@ -620,19 +613,9 @@ include_graphics("imgs/patchwork-contact.png")
 - Working with "Doherty Modelling Group" for Prime Ministers Cabinet
 - Ensure codebase stays stable with multiple contributors
 - Ensure order of operations stays consistent/easy to comprehend with large amounts of code being written (about 8000 lines of code and 260 functions written from September - October)
-
---
-
 - Use {targets}, {fnmate}, and {capsule} to capture pipline workflow, rapidly write functions, and lock in package versions
 - Example: https://github.com/njtierney/ttiq-simulation
-
---
-
-What does that look like?
-
-- 11,177 lines of code
-- 1,535 tests
-- ~705 functions
+- 11,177 lines of code, 1,535 tests, ~705 functions
 
 
 ---

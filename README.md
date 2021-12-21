@@ -4,14 +4,7 @@
 
 Write statistical models in R and fit them by MCMC and optimisation on CPUs and GPUs, using Google 'TensorFlow'. greta lets you write your own model like in BUGS, JAGS and Stan, except that you write models right in R, it scales well to massive datasets, and it’s easy to extend and build on. See the website for more information, including tutorials, examples, package documentation, and the greta forum.
 
-# Slide available [here ... soon]()
-
-# Thanks
-
-- Nick Golding
-- Miles McBain
-- Di Cook
-- Rob Hyndman
+# Slide available [here](https://njt-qut-ec.netlify.app/#1)
 
 # Software:
 
