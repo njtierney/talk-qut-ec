@@ -56,7 +56,7 @@ opts_chunk$set(
   autodep = TRUE
 )
 
-as_table <- function(...) knitr::kable(..., format='html', digits = 3)
+as_table <- function(...) kable(..., format='html', digits = 3)
 
 theme_set(
   theme_grey(base_size = 16) +
@@ -354,14 +354,15 @@ distribution(y) <- binomial(n, p)
 ---
 # gradient-based inference
 
-```{r show-monnahan}
-knitr::include_graphics("imgs/monnahan-2016.png")
+```{r show-monnahan, out.width = "45%"}
+include_graphics("imgs/monnahan-2016.png")
 ```
 
 ---
+
 # google tensorflow
 
-.pull-left[
+.pull-left.large[
 - automatic differentiation
 - efficient linear algebra
 - highly parallel
@@ -369,7 +370,7 @@ knitr::include_graphics("imgs/monnahan-2016.png")
 
 .pull-right[
 ```{r tf-examples}
-knitr::include_graphics("imgs/tf-examples.png")
+include_graphics("imgs/tf-examples.png")
 ```
 
 ]
@@ -377,26 +378,57 @@ knitr::include_graphics("imgs/tf-examples.png")
 ---
 # extendable
 
-```{r extendable}
-knitr::include_graphics("imgs/greta-extendable.png")
+```{r extendable, out.width = "50%"}
+include_graphics("imgs/greta-extendable.png")
 ```
 
 ---
-# extendable
 
-```{r extendable-greta-gp}
-knitr::include_graphics("imgs/greta-extendable-gp.png")
+# `greta.gp`
+
+
+> `greta.gp` extends `greta` to let you define Gaussian processes as part of your model. It provides a syntax to create and combine GP kernels, and use them to define either full rank or sparse Gaussian processes.
+
+.pull-left[
+
+```r
+# kernel & GP
+kernel <- rbf(rbf_len, rbf_var) + 
+            bias(1)
+f <- gp(x, kernel)
+
+# likelihood
+distribution(y) <- normal(f, obs_sd)
+
+# prediction
+f_plot <- project(f, x_plot)
 ```
+
+]
+
+.pull-right[
+```{r extendable-greta-gp}
+include_graphics("imgs/greta-extendable-gp.png")
+```
+]
 
 ---
 
 # Recent Changes
 
+.large[
+- Easy(er) installation of TensorFlow and Python Dependencies
+- Reviewed error messages
+- Various bug fixes related to RStudio not detecting python, updates to tensorflow, 
+- simulation from priors now available with `calculate`
+- See more at the [Changelog for 0.4.0](https://greta-stats.org/news/index.html)
+]
+
 ---
 
 # What's next?
 
-.huge[
+.large[
 - marginalisation (discrete, Laplace, variational)
 
 - discrete samplers
@@ -404,6 +436,8 @@ knitr::include_graphics("imgs/greta-extendable-gp.png")
 - samplers for big data
 
 - extension packages
+
+- No U Turn Sampler
 ]
 
 ---
@@ -411,7 +445,8 @@ knitr::include_graphics("imgs/greta-extendable-gp.png")
 # why 'greta' ?
 
 .pull-left[
-- Grete Hermann (1901 - 1984)
+
+Grete Hermann (1901 - 1984)
 
 wrote the first algorithms for computer algebra
 
@@ -421,11 +456,14 @@ wrote the first algorithms for computer algebra
 ]
 
 .pull-right[
-```{r show-grete}
-knitr::include_graphics("imgs/grete-hermann")
+```{r show-grete, out.width = "60%"}
+include_graphics("imgs/grete-hermann.jpeg")
 ```
 
 ]
+
+---
+# .huge[demo]
 
 ---
 
@@ -530,7 +568,7 @@ m <- fit_hts(
 # Contact matrices - [Prem et al](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005697#sec020)
 
 ```{r show-prem-matrix, echo = FALSE, out.width = "40%"}
-knitr::include_graphics("imgs/prem-age-matrix.png")
+include_graphics("imgs/prem-age-matrix.png")
 ```
 
 
@@ -540,13 +578,13 @@ knitr::include_graphics("imgs/prem-age-matrix.png")
 
 .pull-left[
 ```{r show-prem-matrix-data, echo = FALSE}
-knitr::include_graphics("imgs/prem-supp-data.png")
+include_graphics("imgs/prem-supp-data.png")
 ```
 ]
 
 .pull-right[
 ```{r show-prem-matrix-excel, echo = FALSE}
-knitr::include_graphics("imgs/prem-excel-data.png")
+include_graphics("imgs/prem-excel-data.png")
 ```
 
 ]
@@ -555,14 +593,14 @@ knitr::include_graphics("imgs/prem-excel-data.png")
 # Contact matrices
 
 ```{r show-prem-matrix-excel-data-oz, echo = FALSE, out.width = "75%"}
-knitr::include_graphics("imgs/prem-matrix-excel-australia.png")
+include_graphics("imgs/prem-matrix-excel-australia.png")
 ```
 
 ---
 # Contact matrices
 
 ```{r show-conmat-matric, echo = FALSE}
-knitr::include_graphics("imgs/patchwork-contact.png")
+include_graphics("imgs/patchwork-contact.png")
 ```
 
 ---
@@ -595,43 +633,6 @@ What does that look like?
 - 11,177 lines of code
 - 1,535 tests
 - ~705 functions
-
-* put bits on what greta is here *
-
----
-
-## [{greta}: scalable statistical inference](https://greta-stats.org/)
-
-- Some of the initial work:
-
- - Transfer package builds over to GitHub Actions
- - Develop helper functions for easy installation of TensorFlow + Python
- - Convert roxygen to use markdown
- - Implement tidyverse style
- - Review error messages
- - use glue over paste/sprintf to construct messages
- - Various user side improvements for messages and loading of tensorflow
- - Use snapshot testing to better capture messages
-
----
-
-##  Examples of daily tasks: with {greta}
-
-Python no longer detected?
-  - Latest RStudio doesn't detect Python
-  - File issue with RStudio
-  - Identify fix with an environment variable
-
----
-
-##  Examples of daily tasks: with {greta}
-
-RStudio Tensorflow package has updated
-  - `dim()` now returns vector not list
-  - Completely breaks greta
-  - (This happens just as we are teaching a course)
-  - Solution: have two versions of greta, one docker container, one local
-  - Browse into errored parts of the code in each version
 
 
 ---

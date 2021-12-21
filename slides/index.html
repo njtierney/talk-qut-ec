@@ -156,11 +156,6 @@ With the [Malaria Atlas Project](https://malariaatlas.org/)
 
 (adapted from Heidi Seibold's [UseR2021 Keynote talk](https://docs.google.com/presentation/d/1XQc2U2X8hiK43UzUi9IwvsvULxhVy0WzWSa_Kt4ZJv4/view#slide=id.gdbfb32d486_0_448))
 
-
----
-class: inverse, middle, center
-# What do I do as an RSE?
-
 ---
 background-image: url("imgs/greta-logo-background.png")
 background-size: contain
@@ -236,53 +231,108 @@ distribution(y) &lt;- binomial(n, p)
 ]
 
 ---
+# gradient-based inference
 
-My primary role: Maintain and improve code base of  greta
-
---
-
-What does that look like?
-
-- 11,177 lines of code
-- 1,535 tests
-- ~705 functions
-
-* put bits on what greta is here *
+&lt;img src="imgs/monnahan-2016.png" width="45%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-## [{greta}: scalable statistical inference](https://greta-stats.org/)
+# google tensorflow
 
-- Some of the initial work:
+.pull-left.large[
+- automatic differentiation
+- efficient linear algebra
+- highly parallel
+]
 
- - Transfer package builds over to GitHub Actions
- - Develop helper functions for easy installation of TensorFlow + Python
- - Convert roxygen to use markdown
- - Implement tidyverse style
- - Review error messages
- - use glue over paste/sprintf to construct messages
- - Various user side improvements for messages and loading of tensorflow
- - Use snapshot testing to better capture messages
+.pull-right[
+&lt;img src="imgs/tf-examples.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+# extendable
+
+&lt;img src="imgs/greta-extendable.png" width="50%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-##  Examples of daily tasks: with {greta}
+# `greta.gp`
 
-Python no longer detected?
-  - Latest RStudio doesn't detect Python
-  - File issue with RStudio
-  - Identify fix with an environment variable
+
+&gt; `greta.gp` extends `greta` to let you define Gaussian processes as part of your model. It provides a syntax to create and combine GP kernels, and use them to define either full rank or sparse Gaussian processes.
+
+.pull-left[
+
+```r
+# kernel &amp; GP
+kernel &lt;- rbf(rbf_len, rbf_var) + 
+            bias(1)
+f &lt;- gp(x, kernel)
+
+# likelihood
+distribution(y) &lt;- normal(f, obs_sd)
+
+# prediction
+f_plot &lt;- project(f, x_plot)
+```
+
+]
+
+.pull-right[
+&lt;img src="imgs/greta-extendable-gp.png" width="90%" style="display: block; margin: auto;" /&gt;
+]
 
 ---
 
-##  Examples of daily tasks: with {greta}
+# Recent Changes
 
-RStudio Tensorflow package has updated
-  - `dim()` now returns vector not list
-  - Completely breaks greta
-  - (This happens just as we are teaching a course)
-  - Solution: have two versions of greta, one docker container, one local
-  - Browse into errored parts of the code in each version
+.large[
+- Easy(er) installation of TensorFlow and Python Dependencies
+- Reviewed error messages
+- Various bug fixes related to RStudio not detecting python, updates to tensorflow, 
+- simulation from priors now available with `calculate`
+- See more at the [Changelog for 0.4.0](https://greta-stats.org/news/index.html)
+]
+
+---
+
+# What's next?
+
+.large[
+- marginalisation (discrete, Laplace, variational)
+
+- discrete samplers
+
+- samplers for big data
+
+- extension packages
+
+- No U Turn Sampler
+]
+
+---
+
+# why 'greta' ?
+
+.pull-left[
+
+Grete Hermann (1901 - 1984)
+
+wrote the first algorithms for computer algebra
+
+... without a computer
+
+(To avoid people saying 'greet', the package is spelled _greta_ instead)
+]
+
+.pull-right[
+&lt;img src="imgs/grete-hermann.jpeg" width="60%" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+# .huge[demo]
 
 ---
 
@@ -417,6 +467,13 @@ m &lt;- fit_hts(
 - Use {targets}, {fnmate}, and {capsule} to capture pipline workflow, rapidly write functions, and lock in package versions
 - Example: https://github.com/njtierney/ttiq-simulation
 
+--
+
+What does that look like?
+
+- 11,177 lines of code
+- 1,535 tests
+- ~705 functions
 
 
 ---

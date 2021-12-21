@@ -11,8 +11,13 @@ gg-brolgar-spread	aes	country	facet_strata	geom_line	ggplot	height_cm	heights	ye
 malaria-eg	::	~	list	malaria_africa_ts
 show-code	%>%	as_tibble	country	cur_group_id	data	group_by	select	transmute	ungroup	who_region	who_subregion
 show-yahtsee	~	fit_hts	malaria_africa_ts
-show-prem-matrix	::
-show-prem-matrix-data	::
-show-prem-matrix-excel	::
-show-prem-matrix-excel-data-oz	::
-show-conmat-matric	::
+show-prem-matrix	include_graphics
+show-prem-matrix-data	include_graphics
+show-prem-matrix-excel	include_graphics
+show-prem-matrix-excel-data-oz	include_graphics
+show-conmat-matric	include_graphics
+show-monnahan	include_graphics
+tf-examples	include_graphics
+extendable	include_graphics
+extendable-greta-gp	include_graphics
+show-grete	include_graphics
